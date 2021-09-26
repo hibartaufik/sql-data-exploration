@@ -80,6 +80,8 @@ Mengurutkan berdasarkan Location dan date agar menampilkan data berdasarkan loka
 
 Dalam sekilas data yang kita lihat, untuk field total_deaths berisi NULL karena pandemi merebak di berbagai tempat tidak akan langsung menimbulkan kematian. 
 
+- Eksplorasi awal mula COVID-19 menimbulkan kematian
+
 ```
 SELECT Location, date, total_cases, new_cases, total_deaths, population
 FROM PortfolioProject.dbo.CovidDeaths
@@ -88,8 +90,6 @@ ORDER BY 1, 2
 ```
 
 <img width=720 src=https://user-images.githubusercontent.com/74480780/134760745-5372779d-382c-4722-8660-43ddd4a80d22.png>
-
-- Eksplorasi awal mula COVID-19 menimbulkan kematian
 
 Angka kematian akan muncul beberapa waktu setelah pandemi menyebar dalam suatu lokasi. Untuk Afghanistan misalnya, angka kematian baru muncul pada 23 Maret 2020. Tentu penyebaran pandemi COVID-19 dan dampak kematiannya akan berbeda pada setiap lokasi/negara, hal ini valid jika kita eksplor data dengan nama lokasi yang berbeda, Contohnya Indonesia.
 
