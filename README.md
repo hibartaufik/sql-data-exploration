@@ -42,8 +42,6 @@ Import CovidDeaths.xlxs dan CovidVaccinations.xlxs ke dalam database
 
 Eksplorasi data dengan SQL Query
 
-### 4.1 Melihat data dari kedua tabel
-
 ```
 SELECT * 
 FROM PortfolioProject.dbo.CovidDeaths
@@ -60,11 +58,9 @@ ORDER BY 3, 4
 
 <img width=720 src=https://user-images.githubusercontent.com/74480780/134499616-6db88524-6fd3-4d8c-9c65-661df13f2c34.png>
 
-### 4.2 Menampilkan Data yang Akan Digunakan
-
 Terdapat 26 field pada tabel sehingga tidak efisien jika kita menampilkan semua data termasuk data yang kurang informatif, pilih beberapa field yang dianggap penting dan lebih informatif dari field yang lainnya.
 
-#### 4.2.1 Eksplorasi Data Pada Tabel CovidDeaths
+### 4.1 Eksplorasi Data Pada Tabel CovidDeaths
 
 Memilih field Location, date, total_cases, new_cases, total_deaths, population agar lebih informatif.
 
@@ -246,5 +242,5 @@ ORDER BY 1, 2
 
 <img width=720 src=https://user-images.githubusercontent.com/74480780/134778501-ad4add20-dc3c-4e3f-800c-02e624686951.png>
 
-#### 4.2.2 Eksplorasi Data Pada Tabel CovidVaccinations
+### 4.2 Eksplorasi Data Pada Tabel CovidVaccinations
 
