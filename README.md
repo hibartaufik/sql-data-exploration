@@ -244,7 +244,7 @@ ORDER BY 1, 2
 
 ### 4.2 Eksplorasi Data Pada Tabel CovidVaccinations
 
-Join tabel CovidDeaths dengan CovidVaccinations dengan menggunakan key location dan date
+Join tabel CovidDeaths dengan CovidVaccinations dengan menggunakan key location dan date. Pastikan hasil join dari query sesuai dan tidak keliru.
 
 ```
 SELECT *
@@ -284,4 +284,18 @@ ORDER BY 2, 3
 
 <img width=720 src=https://user-images.githubusercontent.com/74480780/134826905-0b9dd137-3d50-4904-a153-036adf824e9c.png>
 
-Berdasarkan hasil query di atas, Indonesia mulai memberlakukan vaksinasi pada 25 Januari 2021. 
+Berdasarkan hasil query di atas, Indonesia mulai memberlakukan vaksinasi pada 25 Januari 2021. Selain itu, kita juga dapat melihat hasil query untuk setiap progres vaksinasi per hari untuk setiap lokasi.
+
+```
+SELECT death.continent, death.location, death.date, death.population, vaccin.new_vaccinations,
+ SUM(CONVERT(INT, vaccin.new_vaccinations)) OVER (PARTITION BY death.location ORDER BY death.location, death.date) 
+ AS ProgresVaksinasi
+FROM PortfolioProject.dbo.CovidDeaths death
+JOIN PortfolioProject.dbo.CovidVaccinations vaccin
+	ON death.location = vaccin.location
+	AND death.date = vaccin.date
+WHERE death.continent IS NOT NULL AND death.location = 'Indonesia' AND vaccin.new_vaccinations IS NOT NULL
+ORDER BY 2, 3
+```
+
+<img width=720 src=https://user-images.githubusercontent.com/74480780/134827584-0dc6606f-53d7-4d53-8a07-14d013a8996c.png>
