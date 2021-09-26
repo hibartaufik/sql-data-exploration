@@ -244,3 +244,44 @@ ORDER BY 1, 2
 
 ### 4.2 Eksplorasi Data Pada Tabel CovidVaccinations
 
+Join tabel CovidDeaths dengan CovidVaccinations dengan menggunakan key location dan date
+
+```
+SELECT *
+FROM PortfolioProject.dbo.CovidDeaths death
+JOIN PortfolioProject.dbo.CovidVaccinations vaccin
+ON death.location = vaccin.location
+AND death.date = vaccin.date
+```
+
+<img width=720 src=https://user-images.githubusercontent.com/74480780/134826609-a2e007b1-e1a6-4517-8abf-24033a1cd166.png>
+
+- Ekplorasi angka vaksinasi
+
+```
+SELECT death.continent, death.location, death.date, death.population, vaccin.new_vaccinations
+FROM PortfolioProject.dbo.CovidDeaths death
+JOIN PortfolioProject.dbo.CovidVaccinations vaccin
+	ON death.location = vaccin.location
+	AND death.date = vaccin.date
+WHERE death.continent IS NOT NULL
+ORDER BY 2, 3
+```
+
+<img width=720 src=https://user-images.githubusercontent.com/74480780/134826814-22e1018c-4396-4a1f-8d10-ed6ddab380aa.png>
+
+Jika kita lihat angka vaksinasi untuk Indonesia
+
+```
+SELECT death.continent, death.location, death.date, death.population, vaccin.new_vaccinations
+FROM PortfolioProject.dbo.CovidDeaths death
+JOIN PortfolioProject.dbo.CovidVaccinations vaccin
+	ON death.location = vaccin.location
+	AND death.date = vaccin.date
+WHERE death.continent IS NOT NULL AND death.location = 'Indonesia' AND vaccin.new_vaccinations IS NOT NULL
+ORDER BY 2, 3
+```
+
+<img width=720 src=https://user-images.githubusercontent.com/74480780/134826905-0b9dd137-3d50-4904-a153-036adf824e9c.png>
+
+Berdasarkan hasil query di atas, Indonesia mulai memberlakukan vaksinasi pada 25 Januari 2021. 
