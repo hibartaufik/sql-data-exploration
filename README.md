@@ -1,7 +1,7 @@
 
 # SQL Data Exploration
 
-## 1. Dataset
+## 1. Download Dataset
 Download dataset pada situs Our World In Data khusus untuk COVID-19, lalu menetukan rentang waktu dataset yang akan diambil
 
 <img width=720 src=https://user-images.githubusercontent.com/74480780/134254497-cdc353f5-f27f-4769-b2e7-21e99498b860.png>
