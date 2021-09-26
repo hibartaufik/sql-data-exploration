@@ -299,3 +299,19 @@ ORDER BY 2, 3
 ```
 
 <img width=720 src=https://user-images.githubusercontent.com/74480780/134827584-0dc6606f-53d7-4d53-8a07-14d013a8996c.png>
+
+Selanjutnya kita akan membuat View yang nantinya akan digunakan untuk visualisasi pada Tableau.
+
+```
+CREATE VIEW PresentaseVaksinasi AS
+SELECT death.continent, death.location, death.date, death.population, vaccin.new_vaccinations,
+ SUM(CONVERT(INT, vaccin.new_vaccinations)) OVER (PARTITION BY death.location ORDER BY death.location, death.date) 
+ AS ProgresVaksinasi
+FROM PortfolioProject.dbo.CovidDeaths death
+JOIN PortfolioProject.dbo.CovidVaccinations vaccin
+	ON death.location = vaccin.location
+	AND death.date = vaccin.date
+WHERE death.continent IS NOT NULL
+```
+
+<img width=720 src=https://user-images.githubusercontent.com/74480780/134827993-15b3e9a8-3df2-4662-b381-4d0db1d7287a.png>
